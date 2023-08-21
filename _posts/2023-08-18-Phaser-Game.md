@@ -78,6 +78,7 @@ description: This is an example phaser game, look into the source code to learn 
     var score = 0;
     var scoreText;
     var potions = [];
+    var crateList = [];
     var showText;
     var e = false;
 
@@ -141,7 +142,7 @@ description: This is an example phaser game, look into the source code to learn 
 
         this.physics.add.overlap(player, stars, collectStar, null, this);
 
-        crates = this.physics.add.group({})
+        crates = this.physics.add.group()
 
         this.physics.add.collider(crates, platforms, crateCheck, null, this);
         this.physics.add.collider(player, crates, crateCheck, null, this);
@@ -219,9 +220,10 @@ description: This is an example phaser game, look into the source code to learn 
 
         if(cursors.shift.isDown){
             var crate = crates.create(Phaser.Math.Between(0, 800), Phaser.Math.Between(0, 300), 'crate')
-                crate.setScale(.2);
-                crate.setBounce(.4)
-                crate.setCollideWorldBounds(true);
+            crate.setScale(.2);
+            crate.setBounce(.4)
+            crate.setCollideWorldBounds(true);
+            crateList.push(crate)
         }
         if (potionThere){
             showText = false;
@@ -236,6 +238,13 @@ description: This is an example phaser game, look into the source code to learn 
         }
         potionText.setVisible(showText);
 
+        crateList.forEach((c) => {
+            if (c.body.touching.down){
+                c.setDrag(30)
+            }else{
+                c.setDrag(0)
+            }
+        })
     }
 
     function collectStar (player, star)
@@ -265,6 +274,7 @@ description: This is an example phaser game, look into the source code to learn 
                 crate.setScale(.2);
                 crate.setBounce(.4)
                 crate.setCollideWorldBounds(true);
+                crateList.push(crate)
             }
 
         }
@@ -281,7 +291,6 @@ description: This is an example phaser game, look into the source code to learn 
 
         gameOver = true;
     }
-
     function crateCheck(hitter, crate){
         if (hitter.body.velocity.y < 150){
             hitter.setVelocityY(0);
@@ -291,20 +300,16 @@ description: This is an example phaser game, look into the source code to learn 
             var x = crate.body.position.x + 16.875
             var y = crate.body.position.y + 16.875
             crate.destroy()
-
+            crateList.splice(crateList.indexOf(crate), 1); 
             cratePart = this.physics.add.group({
                 key: 'cratePart',
                 repeat: Phaser.Math.Between(2,3),
                 setXY: {x: x, y: y},
-
             })
-
             cratePart.children.iterate(function (child) {
-
                 child.setScale(.3);
                 child.setVelocity(Phaser.Math.Between(-75,75), -150)
                 child.setAngularVelocity(Phaser.Math.Between(-300,300))
-
             })
             var randNum = Math.floor(Math.random()*4)
             potion = new Potion(this, x, y + 4.5, randNum);
@@ -313,8 +318,6 @@ description: This is an example phaser game, look into the source code to learn 
             potions.push(potion)
             potionThere = true;
         }
-
-
     }
 
     function makePlatform(y, x, width, group){
