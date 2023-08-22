@@ -3,13 +3,30 @@ layout: default
 title: Student Blog
 ---
 
-## Luna's Page
+## Toby's Blog
 
-Go to my [Github account](https://github.com/lunaiwa) !!
+My [Github account](https://github.com/toby-leeder)
 
-## Overview of Hacks, Study and Tangibles
-Blogging in GitHub pages is a way to learn and code at the same time. 
+## Under Construction
 
-- Plans, Lists, [Scrum Boards](https://clickup.com/blog/scrum-board/) help you to track key events, show progress and record time.  Effort is a big part of your class grade.  Show plans and time spent!
-- [Hacks(Todo)](https://levelup.gitconnected.com/six-ultimate-daily-hacks-for-every-programmer-60f5f10feae) enable you to stay in focus with key requirements of the class.  Each Hack will produce Tangibles.
-- Tangibles or [Tangible Artifacts](https://en.wikipedia.org/wiki/Artifact_(software_development)) are things you accumulate as a learner and coder. 
+  <script src="{{site.baseurl}}/assets/js/three.r134.min.js"></script>
+  <script src="{{site.baseurl}}/assets/js/vanta.waves.min.js"></script>
+  <script>
+    VANTA.WAVES({
+      el: "html",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      shininess: 48.00,
+      waveHeight: 16.00,
+      waveSpeed: 1.45,
+      zoom: 0.65
+    })
+
+    document.querySelector("body").style.height = window.screen.height + "px"
+
+    </script>
