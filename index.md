@@ -26,7 +26,8 @@ My [Github account](https://github.com/toby-leeder)
       waveSpeed: 1.45,
       zoom: 0.65
     })
-
-    document.querySelector("body").style.height = window.screen.height + "px"
+    var body = document.querySelector("body")
+    if (window.screen.height > body.style.height)
+    body.style.height = (window.screen.height - 64) + "px"
 
     </script>
