@@ -3,7 +3,7 @@ layout: default
 title: Student Blog
 ---
 
-## Toby's Blog
+# Toby's Blog
 
 My [Github account](https://github.com/toby-leeder)
 
