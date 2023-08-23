@@ -29,5 +29,4 @@ My [Github account](https://github.com/toby-leeder)
     var body = document.querySelector("body")
     if (window.screen.height > body.style.height)
     body.style.height = (window.screen.height - 64) + "px"
-
     </script>
