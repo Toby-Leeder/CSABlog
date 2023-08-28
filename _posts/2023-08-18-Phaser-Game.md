@@ -4,6 +4,8 @@ comments: true
 layout: post
 title: Example Game
 description: This is an example phaser game, look into the source code to learn something!
+courses: { csa: {week: 1}}
+type: tangibles
 ---
 
 <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
