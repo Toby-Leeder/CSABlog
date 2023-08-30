@@ -206,7 +206,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 .highlight .ss { color: #90a959; }
 
-body { padding: 0px 0 20px 0px; margin: 0px; font: 14px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #ffffff; font-weight: normal; background: #252525; background-attachment: fixed !important; background: linear-gradient(#26e281, #2121c3);}
+body { padding: 0px 0 20px 0px; margin: 0px; font: 14px/1.5 "OpenSansRegular", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #ffffff; font-weight: normal; background: #252525; background-attachment: fixed !important; background: linear-gradient(#26e281, #105cea);}
 h1, h2, h3, h4, h5, h6 { color: #ffffff; margin: 0 0 10px; font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: normal; }
 
 p, ul, ol, table, pre, dl { margin: 0 0 20px; }
