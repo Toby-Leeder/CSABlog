@@ -4,7 +4,7 @@ layout: post
 type: examples
 description: A remix of Conway's game of life using timer, onclick and algorithms.
 permalink: /frontend/life
-courses: { csa: {week: 2} }
+courses: { ToC: {week: 2} }
 ---
 
 

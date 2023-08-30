@@ -1,5 +1,5 @@
 ---
-layout: blogs
-permalink: /blogs
-title: Blogs
+layout: notes
+permalink: /notes
+title: Notes
 ---

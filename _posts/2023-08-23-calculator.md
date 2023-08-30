@@ -4,7 +4,7 @@ layout: post
 description: A common way to become familiar with a language is to build a calculator.  This calculator shows off button with actions.
 permalink: /techtalk/home_style
 type: examples
-courses: { csa: {week: 2} }
+courses: { ToC: {week: 2} }
 ---
 
 <!-- 
