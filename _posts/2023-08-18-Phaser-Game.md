@@ -86,13 +86,14 @@ type: tangibles
 
     function create ()
     {
-
+        // Adds the sky image to the background. "this" is the phaser game object. .setScale(5) is a method which scales up the sky by 5.
         let bg = this.add.image(400, 300, 'sky').setScale(5);
 
+        // Creates the physics group for the platforms. A group allows all children of the group to have the same characteristics. Static means the group is immovable.
         platforms = this.physics.add.staticGroup();
 
+        // A function I created to make dynamicly sized platforms based on the single picture I have without using the scaling feature
         makePlatform(600-32/2, 30, 1920*2, platforms)
-
         makePlatform(220, 1000, 500, platforms)
         makePlatform(450, 600, 500, platforms)
         makePlatform(300, 50, 500, platforms)
@@ -286,13 +287,11 @@ type: tangibles
     function hitBomb (player, bomb)
     {
         this.physics.pause();
-
         player.setTint(0xff0000);
-
         player.anims.play('turn');
-
         gameOver = true;
     }
+    
     function crateCheck(hitter, crate){
         if (hitter.body.velocity.y < 150){
             hitter.setVelocityY(0);
@@ -322,6 +321,7 @@ type: tangibles
         }
     }
 
+    // function to create platforms. Essentially, it sets values for the two x values that the platform will be between, then adds a platform to each end until the two ends reach each other
     function makePlatform(y, x, width, group){
         var groundWidth = 400;
         var groundHeight = 32;
@@ -343,12 +343,14 @@ type: tangibles
         }
     }
 
+    // function to check for overlapping sprites. Used when unable to use the overlap detector built in because the detection needs to be continous or more dynamic
     function checkOverlap(spriteA, spriteB) {
 	    var boundsA = spriteA.getBounds();
 	    var boundsB = spriteB.getBounds();
 	    return Phaser.Geom.Intersects.RectangleToRectangle(boundsA, boundsB);
 	}
 
+    // function run when a player is near a potion. if e has been pressed (checked by a boolean)
     function nearPotion(potion, player){
         if(e){
             console.log(player.scaleY)
@@ -357,7 +359,8 @@ type: tangibles
             potion.drinkAction(player);
         }
     }
-
+    
+    // Potion class definition
     class Potion extends Phaser.Physics.Arcade.Sprite{
         constructor(scene, x, y, num){
             var asset;
