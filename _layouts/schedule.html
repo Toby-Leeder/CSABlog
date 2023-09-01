@@ -2,6 +2,40 @@
 layout: default
 ---
 
+<style>
+  /* Tooltip container */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  </style>
+  
+  <div class="tooltip">Hover over me
+    <span class="tooltiptext">Tooltip text</span>
+  </div>
+
+  
 {%comment%} 
 Setup course data
     - Extract data by course
@@ -79,6 +113,8 @@ Load all posts with site
         {% assign week = post.courses[page.course].week | tangibles: 0 %}
         {% assign title = post.title | compact %}
         {% assign url = post.url | compact %}
+        {% assign description = post.description | compact %}
+
   
   {%comment%} 
   <!-- process posts for current week -->
@@ -89,18 +125,23 @@ Load all posts with site
   <!-- organizing blogs by type -->
   {%endcomment%}
           {% if post.type == "plans" %} 
+              {% assign plans = plans | unshift: description %}
               {% assign plans = plans | unshift: title %}
               {% assign plans = plans | unshift: url %}
           {% elsif post.type == "examples" %}
+              {% assign examples = examples | unshift: description %}
               {% assign examples = examples | unshift: title %}
               {% assign examples = examples | unshift: url %} 
           {% elsif post.type == "hacks" %}
+              {% assign hacks = hacks | unshift: description %}
               {% assign hacks = hacks | unshift: title %}
               {% assign hacks = hacks | unshift: url %} 
           {% elsif post.type == "tangibles" %}
+              {% assign tangibles = tangibles | unshift: description %}
               {% assign tangibles = tangibles | unshift: title %}
               {% assign tangibles = tangibles | unshift: url %} 
           {% else %}
+              {% assign uk = uk | unshift: description %}
               {% assign uk = uk | unshift: title %}
               {% assign uk = uk | unshift: url %}     
           {% endif %}
@@ -112,7 +153,7 @@ Load all posts with site
   {%comment%} 
   <!-- ordering units and inserting column delimiters -->
   {%endcomment%}
-  {% assign units = units | concat:plans | concat:deli  | concat:examples | concat:deli | concat:hacks | concat:deli | concat:tangibles %}
+  {% assign units = units | concat:plans | concat:deli | concat:examples | concat:deli | concat:hacks | concat:deli | concat:tangibles %}
 
   {%comment%} 
   <!-- This Loop is maximum iterationss, since elements are pairs it will decrement a extra times at the end -->
@@ -128,8 +169,12 @@ Load all posts with site
   <td>
       {% assign units = units | shift %} <!-- remove delimiter -->
     {% else %} <!-- make a link in the column -->
-      - <a href="{{site.baseurl}}/{{units[0]}}">{{units[1]}}</a> <br/> 
-      {% assign units = units | shift | shift %} <!-- remove title and url -->
+      - <a href="{{site.baseurl}}/{{units[0]}}">
+        <div class="tooltip">{{units[1]}}
+          <span class="tooltiptext">{{units[2]}}</span>
+        </div>  
+      </a> <br/> 
+      {% assign units = units | shift | shift | shift %} <!-- remove title and url -->
     {% endif %}
   {% endfor %}
   </td>
