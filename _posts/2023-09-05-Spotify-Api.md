@@ -6,6 +6,8 @@ courses: {ToC: {week: 2}}
 type: tangibles
 ---
 
+<button type="button">Click Me!</button>
+
 <script type="module">
     function generateRandomString(length) {
     let text = '';
@@ -33,7 +35,7 @@ type: tangibles
   }
   
   const clientId = 'a76d4532c6e14dd7bd7393e3fccc1185';
-  const redirectUri = 'http://localhost:8080';
+  const redirectUri = 'http://localhost:3000';
   
   let codeVerifier = generateRandomString(128);
   
