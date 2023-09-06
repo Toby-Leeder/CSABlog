@@ -39,24 +39,26 @@ type: tangibles
     
     let codeVerifier = generateRandomString(128);
     
-    generateCodeChallenge(codeVerifier).then(codeChallenge => {
-        let state = generateRandomString(16);
-        let scope = 'user-read-private user-read-email';
-    
-        localStorage.setItem('code_verifier', codeVerifier);
-    
-        let args = new URLSearchParams({
-        response_type: 'code',
-        client_id: clientId,
-        scope: scope,
-        redirect_uri: redirectUri,
-        state: state,
-        code_challenge_method: 'S256',
-        code_challenge: codeChallenge
+    function redirectToSpotifyAuthorizeEndpoint(){
+        generateCodeChallenge(codeVerifier).then(codeChallenge => {
+            let state = generateRandomString(16);
+            let scope = 'user-read-private user-read-email';
+        
+            localStorage.setItem('code_verifier', codeVerifier);
+        
+            let args = new URLSearchParams({
+            response_type: 'code',
+            client_id: clientId,
+            scope: scope,
+            redirect_uri: redirectUri,
+            state: state,
+            code_challenge_method: 'S256',
+            code_challenge: codeChallenge
+            });
+        
+            window.location = 'https://accounts.spotify.com/authorize?' + args;
         });
-    
-        window.location = 'https://accounts.spotify.com/authorize?' + args;
-    });
+    }
     
     const urlParams = new URLSearchParams(window.location.search);
     let code = urlParams.get('code');
@@ -70,27 +72,27 @@ type: tangibles
         client_id: clientId,
         code_verifier: codeVerifier2
     });
-    function redirectToSpotifyAuthorizeEndpoint(){
-        fetch('https://accounts.spotify.com/api/token', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: body
+
+    fetch('https://accounts.spotify.com/api/token', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: body
+    })
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('HTTP status ' + response.status);
+        }
+        return response.json();
         })
-            .then(response => {
-            if (!response.ok) {
-                throw new Error('HTTP status ' + response.status);
-            }
-            return response.json();
-            })
-            .then(data => {
-            localStorage.setItem('access_token', data.access_token);
-            })
-            .catch(error => {
-            console.error('Error:', error);
-            });
-    } 
+        .then(data => {
+        localStorage.setItem('access_token', data.access_token);
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        });
+    
     async function getProfile(accessToken) {
         accessToken = localStorage.getItem('access_token');
     
