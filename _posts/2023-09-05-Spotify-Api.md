@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Spotify Api Test
-description: Tests for the spotify api functions, attempts to add to queue
+title: Spotify Api Test 2
+description: Tests for the spotify api functions, attempts to add to queue.
 courses: {ToC: {week: 2}}
 type: tangibles
 ---
@@ -104,7 +104,9 @@ type: tangibles
     
         const data = await response.json();
     }
+    if(code){
 
-    document.getElementById('login-button').addEventListener('click', redirectToSpotifyAuthorizeEndpoint(), false);
-
+    }else{
+        document.getElementById('login-button').addEventListener('click', function() { redirectToSpotifyAuthorizeEndpoint();}, false);
+    }
 </script>
