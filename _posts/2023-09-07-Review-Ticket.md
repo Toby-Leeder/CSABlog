@@ -8,6 +8,6 @@ courses: { ToC: {week: 3} }
 ---
 
 
-- [Week 2 Plans]({{site.baseurl}}//08/28/Week-2-plans.html)
-- [Spotify Test]({{site.baseurl}}//09/05/Spotify-Api.html)
-- [ChatGPT Review]({{site.baseurl}}//09/07/ChatGPT-Code-Review_IPYNB_2_.html)
+- [Week 2 Plans]({{site.baseurl}}/2023/08/28/Week-2-plans.html)
+- [Spotify Test]({{site.baseurl}}/2023/09/05/Spotify-Api.html)
+- [ChatGPT Review]({{site.baseurl}}/2023/09/07/ChatGPT-Code-Review_IPYNB_2_.html)
