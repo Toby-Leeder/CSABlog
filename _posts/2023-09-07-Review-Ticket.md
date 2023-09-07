@@ -8,6 +8,6 @@ courses: { ToC: {week: 3} }
 ---
 
 
-- [Week 2 Plans](https://toby-leeder.github.io/CSABlog//2023/08/28/Week-2-plans.html)
-- [Spotify Test](https://toby-leeder.github.io/CSABlog//2023/09/05/Spotify-Api.html)
-- [ChatGPT Review](https://toby-leeder.github.io/CSABlog//2023/09/07/ChatGPT-Code-Review_IPYNB_2_.html)
+- [Week 2 Plans]({{site.baseurl}}/08/28/Week-2-plans.html)
+- [Spotify Test]({{site.baseurl}}/09/05/Spotify-Api.html)
+- [ChatGPT Review]({{site.baseurl}}/09/07/ChatGPT-Code-Review_IPYNB_2_.html)
