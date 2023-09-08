@@ -20,4 +20,5 @@ type: tangibles
     
         const data = await response.json();
     }
+    document.getElementById('login-button').addEventListener('click', function() { getProfile();}, false);
 </script>
