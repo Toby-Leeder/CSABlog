@@ -20,9 +20,4 @@ type: tangibles
     
         const data = await response.json();
     }
-    if(code){
-
-    }else{
-        document.getElementById('login-button').addEventListener('click', function() { redirectToSpotifyAuthorizeEndpoint();}, false);
-    }
 </script>
