@@ -10,7 +10,8 @@ type: tangibles
 
 <script type="module">
     let codeVerifier2 = localStorage.getItem('code_verifier');
-    
+    let code = urlParams.get('code');
+
     let body = new URLSearchParams({
         grant_type: 'authorization_code',
         code: code,
@@ -49,6 +50,7 @@ type: tangibles
         });
     
         const data = await response.json();
+        console.log(data);
     }
     document.getElementById('login-button').addEventListener('click', function() { getProfile();}, false);
 </script>
