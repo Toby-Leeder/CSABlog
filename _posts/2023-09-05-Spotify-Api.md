@@ -35,7 +35,7 @@ type: tangibles
     }
     
     const clientId = 'a76d4532c6e14dd7bd7393e3fccc1185';
-    const redirectUri = 'http://localhost:3000';
+    const redirectUri = 'https://toby-leeder.github.io/CSABlog/2023/09/05/Spotify-Api-2.html';
     
     let codeVerifier = generateRandomString(128);
     
