@@ -10,6 +10,7 @@ type: tangibles
 
 <script type="module">
     let codeVerifier2 = localStorage.getItem('code_verifier');
+    const urlParams = new URLSearchParams(window.location.search);
     let code = urlParams.get('code');
 
     let body = new URLSearchParams({
@@ -52,5 +53,5 @@ type: tangibles
         const data = await response.json();
         console.log(data);
     }
-    document.getElementById('login-button').addEventListener('click', function() { getProfile();}, false);
+    document.getElementById('login-button').addEventListener('click', function() { getProfile(); console.log("runnign");}, false);
 </script>
