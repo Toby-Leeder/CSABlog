@@ -358,7 +358,7 @@ type: tangibles
         }
     }
 
-    // function to create platforms. Essentially, it sets values for the two x values that the platform will be between, then adds a platform to each end until the two ends reach each other
+    // function to create platforms. Essentially, it sets values for the two x values that the platform will be between, then adds a platform to each end until the two ends reach each other. However, the platform who's width is smaller than the picture width doesn't work correctly. It may be better to use matter to create a new object instead. 
     function makePlatform(y, x, width, group){
         var groundWidth = 400; // length of ground image
         var groundHeight = 32; // height of ground image
