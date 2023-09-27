@@ -100,6 +100,7 @@ type: tangibles
         makePlatform(300, 50, 500, platforms)
         makePlatform(100, 500, 700, platforms)
 
+
         // Initializes the main player and the dude sprite
         player = this.physics.add.sprite(100, 450, 'dude');
 
@@ -361,7 +362,7 @@ type: tangibles
     function makePlatform(y, x, width, group){
         var groundWidth = 400; // length of ground image
         var groundHeight = 32; // height of ground image
-        if (width >= 400){ 
+        if (width >= 400){ // checks if width is greater than the ground width
             var x1 = x;
             var x2 = x + width;
             var sw = true;
@@ -373,6 +374,24 @@ type: tangibles
                 else {
                     group.create(x2-groundWidth, y, "ground");  // creates a new element in the group that was passed through
                     x2 = x2 - groundWidth;
+                }
+                sw = !sw;
+            }
+        }
+        else { // runs if the platform width is less than the size of the picture (bugged)
+            var scale = width/groundWidth;
+            var newHeight = 32 * scale
+            var y1 = y;
+            var y2 = y + 32;
+            var sw = true;
+            while (y1 < y2){
+                if (sw){
+                    group.create(x, y1, "ground").setScale(scale).setSize(width, newHeight); // creates a new element in the group that was passed through. Changes the scale of the sprite and the size. However the size doesn't work as intended, the hitbox of the model stays outside of the image. 
+                    y1 = y1 + newHeight;
+                }
+                else {
+                    group.create(x, y2 - newHeight, "ground").setScale(scale).setSize(width, newHeight);  // creates a new element in the group that was passed through. Changes the scale of the sprite and the size.
+                    y2 = y2 - newHeight;
                 }
                 sw = !sw;
             }
