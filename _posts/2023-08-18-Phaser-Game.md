@@ -359,19 +359,19 @@ type: tangibles
 
     // function to create platforms. Essentially, it sets values for the two x values that the platform will be between, then adds a platform to each end until the two ends reach each other
     function makePlatform(y, x, width, group){
-        var groundWidth = 400;
-        var groundHeight = 32;
-        if (groundWidth >= 400){
+        var groundWidth = 400; // length of ground image
+        var groundHeight = 32; // height of ground image
+        if (width >= 400){ 
             var x1 = x;
             var x2 = x + width;
             var sw = true;
             while (x1 < x2){
                 if (sw){
-                    group.create(x1, y, "ground");
+                    group.create(x1, y, "ground"); // creates a new element in the group that was passed through
                     x1 = x1 + groundWidth;
                 }
                 else {
-                    group.create(x2-groundWidth, y, "ground");
+                    group.create(x2-groundWidth, y, "ground");  // creates a new element in the group that was passed through
                     x2 = x2 - groundWidth;
                 }
                 sw = !sw;
