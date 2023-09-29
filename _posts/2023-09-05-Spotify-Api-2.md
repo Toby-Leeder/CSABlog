@@ -13,6 +13,7 @@ type: tangibles
     const urlParams = new URLSearchParams(window.location.search);
     let code = urlParams.get('code');
     const redirectUri = 'https://toby-leeder.github.io/CSABlog/2023/09/05/Spotify-Api-2.html';
+    const clientId = 'a76d4532c6e14dd7bd7393e3fccc1185';
 
     let body = new URLSearchParams({
         grant_type: 'authorization_code',
