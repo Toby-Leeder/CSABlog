@@ -35,6 +35,7 @@ type: tangibles
         return response.json();
         })
         .then(data => {
+        console.log("localStorageIng")
         localStorage.setItem('access_token', data.access_token);
         })
         .catch(error => {
@@ -53,5 +54,5 @@ type: tangibles
         const data = await response.json();
         console.log(data);
     }
-    document.getElementById('login-button').addEventListener('click', function() { getProfile(); console.log("runnign");}, false);
+    document.getElementById('login-button').addEventListener('click', function() {console.log("runnign"); getProfile();}, false);
 </script>
