@@ -12,6 +12,7 @@ type: tangibles
     let codeVerifier2 = localStorage.getItem('code_verifier');
     const urlParams = new URLSearchParams(window.location.search);
     let code = urlParams.get('code');
+    const redirectUri = 'https://toby-leeder.github.io/CSABlog/2023/09/05/Spotify-Api-2.html';
 
     let body = new URLSearchParams({
         grant_type: 'authorization_code',
