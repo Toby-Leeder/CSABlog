@@ -47,7 +47,22 @@ type: tangibles
     async function getProfile(accessToken) {
         accessToken = localStorage.getItem('access_token');
     
-        const response = await fetch('https://api.spotify.com/v1/me', {
+        const response = await fetch('https://api.spotify.com/v1/me/players', {
+        headers: {
+            Authorization: 'Bearer ' + accessToken
+        }
+        });
+    
+        const data = await response.json();
+        console.log(data);
+    }
+
+    async function playSong(accessToken) {
+        accessToken = localStorage.getItem('access_token');
+    
+        const response = await fetch('https://api.spotify.com/v1/me/player/queue', {
+        method : "POST",
+        uri : "spotify:track:4iV5W9uYEdYUVa79Axb7Rh",
         headers: {
             Authorization: 'Bearer ' + accessToken
         }
