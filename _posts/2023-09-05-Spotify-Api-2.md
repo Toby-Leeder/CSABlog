@@ -53,10 +53,18 @@ type: tangibles
         headers: {
             Authorization: 'Bearer ' + accessToken
         }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('HTTP status ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response data
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
-    
-        const data = await response.json();
-        console.log(data);
     }
 
     async function playSong(accessToken) {
