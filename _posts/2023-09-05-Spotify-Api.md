@@ -42,7 +42,7 @@ type: tangibles
     function redirectToSpotifyAuthorizeEndpoint(){
         generateCodeChallenge(codeVerifier).then(codeChallenge => {
             let state = generateRandomString(16);
-            let scope = 'user-read-private user-read-email';
+            let scope = 'user-read-private user-read-email user-read-currently-playing user-modify-playback-state';
         
             localStorage.setItem('code_verifier', codeVerifier);
         
