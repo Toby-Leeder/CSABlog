@@ -49,7 +49,7 @@ type: tangibles
     async function getProfile(accessToken) {
         accessToken = localStorage.getItem('access_token');
     
-        const response = await fetch('https://api.spotify.com/v1/me/player', {
+        const response = await fetch('https://api.spotify.com/v1/me', {
         headers: {
             Authorization: 'Bearer ' + accessToken
         }
