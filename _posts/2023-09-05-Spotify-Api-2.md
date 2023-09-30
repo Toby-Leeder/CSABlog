@@ -6,7 +6,9 @@ courses: {ToC: {week: 3}}
 type: tangibles
 ---
 
-<button type="button" id="login-button">Click Me!</button>
+<button type="button" id="login-button">Profile!</button>
+<button type="button" id="playSong-button">Play a song!</button>
+
 
 <script type="module">
     let codeVerifier2 = localStorage.getItem('code_verifier');
@@ -71,5 +73,7 @@ type: tangibles
         const data = await response.json();
         console.log(data);
     }
-    document.getElementById('login-button').addEventListener('click', function() {console.log("runnign"); getProfile();}, false);
+    document.getElementById('login-button').addEventListener('click', function() { getProfile();}, false);
+    document.getElementById('playSong-button').addEventListener('click', function() { playSong();}, false);
+
 </script>
