@@ -97,10 +97,19 @@ type: tangibles
         headers: {
             Authorization: 'Bearer ' + accessToken
         }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('HTTP status ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)  
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     
-        const data = await response.json();
-        console.log(data);
     }
     document.getElementById('me-button').addEventListener('click', function() { me();}, false);
     document.getElementById('login-button').addEventListener('click', function() { getProfile();}, false);
