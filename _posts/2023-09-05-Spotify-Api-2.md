@@ -48,7 +48,7 @@ type: tangibles
         });
 
     async function getProfile() {
-        accessToken = localStorage.getItem('access_token');
+        var accessToken = localStorage.getItem('access_token');
     
         const response = await fetch('https://api.spotify.com/v1/me/player', {
         headers: {
@@ -69,7 +69,7 @@ type: tangibles
     }
 
     async function me() {
-        accessToken = localStorage.getItem('access_token');
+        var accessToken = localStorage.getItem('access_token');
     
         const response = await fetch('https://api.spotify.com/v1/me', {
         headers: {
@@ -90,7 +90,7 @@ type: tangibles
     }
 
     async function playSong() {
-        accessToken = localStorage.getItem('access_token');
+        var accessToken = localStorage.getItem('access_token');
     
         const response = await fetch('https://api.spotify.com/v1/me/player/queue?uri=spotify:track:4iV5W9uYEdYUVa79Axb7Rh', {
         method : "POST",
