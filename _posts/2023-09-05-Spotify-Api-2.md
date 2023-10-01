@@ -6,6 +6,7 @@ courses: {ToC: {week: 3}}
 type: tangibles
 ---
 
+<button type="button" id="me-button">me!</button>
 <button type="button" id="login-button">Profile!</button>
 <button type="button" id="playSong-button">Play a song!</button>
 
@@ -67,6 +68,28 @@ type: tangibles
         });
     }
 
+    async function me(accessToken) {
+        accessToken = localStorage.getItem('access_token');
+    
+        const response = await fetch('https://api.spotify.com/v1/me', {
+        headers: {
+            Authorization: 'Bearer ' + accessToken
+        }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('HTTP status ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const scopes = data.scope;
+            console.log('Scopes associated with the access token:', scopes);        
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
     async function playSong(accessToken) {
         accessToken = localStorage.getItem('access_token');
     
@@ -81,6 +104,7 @@ type: tangibles
         const data = await response.json();
         console.log(data);
     }
+    document.getElementById('me-button').addEventListener('click', function() { me();}, false);
     document.getElementById('login-button').addEventListener('click', function() { getProfile();}, false);
     document.getElementById('playSong-button').addEventListener('click', function() { playSong();}, false);
 
