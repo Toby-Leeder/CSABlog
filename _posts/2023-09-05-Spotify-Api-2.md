@@ -40,8 +40,8 @@ type: tangibles
         return response.json();
         })
         .then(data => {
-        console.log("localStorageIng")
-        localStorage.setItem('access_token', data.access_token);
+            console.log("localStorageIng")
+            localStorage.setItem('access_token', data.access_token);
         })
         .catch(error => {
         console.error('Error:', error);
@@ -82,8 +82,7 @@ type: tangibles
             return response.json();
         })
         .then(data => {
-            const scopes = data.scope;
-            console.log('Scopes associated with the access token:', scopes);        
+            console.log(data)  
         })
         .catch(error => {
             console.error('Error:', error);
