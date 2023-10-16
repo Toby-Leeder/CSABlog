@@ -9,6 +9,10 @@ type: tangibles
 <button type="button" id="me-button">me!</button>
 <button type="button" id="login-button">Profile!</button>
 <button type="button" id="playSong-button">Play a song!</button>
+<button type="button" id="nextSong-button">Next Song</button>
+<button type="button" id="lastSong-button">Previous Song</button>
+<button type="button" id="pause-button">Pause</button>
+<button type="button" id="play-button">Play</button>
 
 
 <script type="module">
@@ -109,10 +113,34 @@ type: tangibles
         .catch(error => {
             console.error('Error:', error);
         });
-    
+    }
+
+    async function changePlayback(playback) {
+        var accessToken = localStorage.getItem('access_token');
+        const response = await fetch('https://api.spotify.com/v1/me/player/' + playback, {
+        method : "POST",
+        headers: {
+            Authorization: 'Bearer ' + accessToken
+        }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('HTTP status ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)  
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     }
     document.getElementById('me-button').addEventListener('click', function() { me();}, false);
     document.getElementById('login-button').addEventListener('click', function() { getProfile();}, false);
     document.getElementById('playSong-button').addEventListener('click', function() { playSong();}, false);
+    document.getElementById('nextSong-button').addEventListener('click', function() { changePlayback("next");}, false);
+    document.getElementById('lastSong-button').addEventListener('click', function() { changePlayback("previous");}, false);
+    document.getElementById('pause-button').addEventListener('click', function() { changePlayback("pause");}, false);
+    document.getElementById('play-button').addEventListener('click', function() { changePlayback("play");}, false);
 
 </script>
