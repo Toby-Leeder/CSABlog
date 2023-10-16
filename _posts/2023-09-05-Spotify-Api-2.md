@@ -115,10 +115,10 @@ type: tangibles
         });
     }
 
-    async function changePlayback(playback) {
+    async function changePlayback(playback, method) {
         var accessToken = localStorage.getItem('access_token');
         const response = await fetch('https://api.spotify.com/v1/me/player/' + playback, {
-        method : "POST",
+        method : method,
         headers: {
             Authorization: 'Bearer ' + accessToken
         }
@@ -138,9 +138,9 @@ type: tangibles
     document.getElementById('me-button').addEventListener('click', function() { me();}, false);
     document.getElementById('login-button').addEventListener('click', function() { getProfile();}, false);
     document.getElementById('playSong-button').addEventListener('click', function() { playSong();}, false);
-    document.getElementById('nextSong-button').addEventListener('click', function() { changePlayback("next");}, false);
-    document.getElementById('lastSong-button').addEventListener('click', function() { changePlayback("previous");}, false);
-    document.getElementById('pause-button').addEventListener('click', function() { changePlayback("pause");}, false);
-    document.getElementById('play-button').addEventListener('click', function() { changePlayback("play");}, false);
+    document.getElementById('nextSong-button').addEventListener('click', function() { changePlayback("next", "POST");}, false);
+    document.getElementById('lastSong-button').addEventListener('click', function() { changePlayback("previous", "POST");}, false);
+    document.getElementById('pause-button').addEventListener('click', function() { changePlayback("pause", "PUT");}, false);
+    document.getElementById('play-button').addEventListener('click', function() { changePlayback("play", "PUT");}, false);
 
 </script>
