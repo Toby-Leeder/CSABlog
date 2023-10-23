@@ -23,6 +23,7 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
+        console.log("what the fricdge!")
         var socket = new SockJS('https://cj-backend.stu.nighthawkcodingsociety.com/ws');
         stompClient = Stomp.over(socket);
 
