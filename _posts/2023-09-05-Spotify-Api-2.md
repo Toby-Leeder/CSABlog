@@ -142,5 +142,4 @@ type: tangibles
     document.getElementById('lastSong-button').addEventListener('click', function() { changePlayback("previous", "POST");}, false);
     document.getElementById('pause-button').addEventListener('click', function() { changePlayback("pause", "PUT");}, false);
     document.getElementById('play-button').addEventListener('click', function() { changePlayback("play", "PUT");}, false);
-
 </script>
