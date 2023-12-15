@@ -1,0 +1,122 @@
+---
+title: Table Stuff
+layout: post
+type: tangibles
+description: Table stuff
+courses: { ToC: {week: 8} }
+---
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>var define = null;</script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<div id="table"></div>
+<label for="championInput">Champion:</label>
+<input type="text" id="championInput">
+<label for="winrateInput">Winrate:</label>
+<input type="text" id="winrateInput">
+<label for="laneInput">Most Played Lane:</label>
+<input type="text" id="laneInput">
+<label for="brokenInput">Broken?:</label>
+<input type="text" id="brokenInput">
+<button id="add-row-btn">Add Row</button>
+<script>
+    // Fake API function
+function getAPI() {
+    return [
+                { name: "Ksante", winrate: "46.40%", lane: "Top", broken: "Yes" },
+                { name: "Kennen", winrate: "48.18%", lane: "Top", broken: "No" },
+                { name: "Fiora", winrate: "50.79%", lane: "Top", broken: "Yes" },
+                { name: "Xerath", winrate: "51.06%", lane: "Support", broken: "Yes" },
+                { name: "Illaoi", winrate: "51.18%", lane: "Top", broken: "Yes" },
+                { name: "Shaco", winrate: "50.31%", lane: "Jungle", broken: "Yes" },
+                { name: "Akshan", winrate: "51.65%", lane: "Mid", broken: "Yes" },
+                { name: "Yone", winrate: "50.14%", lane: "Mid", broken: "Yes" },
+                { name: "Cho'Gath", winrate: "51.11%", lane: "Top", broken: "No" },
+                { name: "Heimerwiener", winrate: "50.75%", lane: "Support", broken: "Yes" },
+                { name: "Urgot", winrate: "50.73%", lane: "Top", broken: "No" },
+                { name: "Ksante", winrate: "46.40%", lane: "Top", broken: "Yes" },
+                { name: "Kennen", winrate: "48.18%", lane: "Top", broken: "No" },
+                { name: "Fiora", winrate: "50.79%", lane: "Top", broken: "Yes" },
+                { name: "Xerath", winrate: "51.06%", lane: "Support", broken: "Yes" },
+                { name: "Illaoi", winrate: "51.18%", lane: "Top", broken: "Yes" },
+                { name: "Shaco", winrate: "50.31%", lane: "Jungle", broken: "Yes" },
+                { name: "Akshan", winrate: "51.65%", lane: "Mid", broken: "Yes" },
+                { name: "Yone", winrate: "50.14%", lane: "Mid", broken: "Yes" },
+                { name: "Cho'Gath", winrate: "51.11%", lane: "Top", broken: "No" },
+                { name: "Heimerwiener", winrate: "50.75%", lane: "Support", broken: "Yes" },
+                { name: "Urgot", winrate: "50.73%", lane: "Top", broken: "No" }
+
+    ];
+}
+function addRow(table) {
+    table.row.add([
+        $('#championInput').val(),
+        $('#winrateInput').val(),
+        $('#laneInput').val(),
+        $('#brokenInput').val(),
+        '<button class="remove-btn">Remove</button> <button class="update-btn">Update</button>'
+    ]).draw();
+}
+
+function updateRow(table, rowIndex) {
+    table.row(rowIndex).data([
+        $('#championInput').val(),
+        $('#winrateInput').val(),
+        $('#laneInput').val(),
+        $('#brokenInput').val(),
+        '<button class="remove-btn">Remove</button> <button class="update-btn">Update</button>'
+    ]).draw();
+}
+
+$(document).ready(function() {
+            var champions = getAPI();
+
+            var table = $("<table>").attr("id", "test").addClass("table");
+            var thead = $("<thead>").appendTo(table);
+            var tbody = $("<tbody>").appendTo(table);
+            
+            var headerRow = $("<tr>").appendTo(thead);
+            $("<th>").text("Champion").appendTo(headerRow);
+            $("<th>").text("Winrate").appendTo(headerRow);
+            $("<th>").text("Most played Lane").appendTo(headerRow);
+            $("<th>").text("Broken?").appendTo(headerRow);
+            $("<th>").text("Actions").appendTo(headerRow); // Add Actions column
+
+            champions.forEach(function(champion) {
+                var row = $("<tr>").appendTo(tbody);
+                $("<td>").text(champion.name).appendTo(row);
+                $("<td>").text(champion.winrate).appendTo(row);
+                $("<td>").text(champion.lane).appendTo(row);
+                $("<td>").text(champion.broken).appendTo(row);
+                $("<td>").html('<button class="remove-btn" id="remove-btn">Remove</button> <button class="update-btn" id="update-btn">Update</button>').appendTo(row); // Add Remove button
+            });
+
+            table.appendTo("#table");
+            var test = $("#test").DataTable();
+
+            $('#test tbody').on('click', ".remove-btn", function () {
+                console.log("running");
+                test.row($(this).parents('tr')).remove().draw();
+            });
+
+            $('#test tbody').on('click', ".update-btn", function () {
+                var rowIndex = test.row($(this).parents('tr')).index();
+                updateRow(test, rowIndex);
+            });
+
+            $("#add-row-btn").on("click", function() {
+                addRow(test);
+            });
+        });
+        
+</script>
+</body>
+</html>
