@@ -1,0 +1,42 @@
+---
+title: QR Code
+layout: post
+type: Tangibles
+description: Testing QR langing page for qr codes
+courses: { ToC: {week: 19} }
+---
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting to https://github.com/users/Toby-Leeder/projects/2</title>
+    <!-- <meta http-equiv="refresh" content="0; URL=https://github.com/users/Toby-Leeder/projects/2/views/1?layout=board">
+    <link rel="canonical" href="https://github.com/users/Toby-Leeder/projects/2/views/1?layout=board"> -->
+    </head>
+    <script>
+        var hash = window.location.hash.substring(1)
+        links = hash.split("%20");
+        var head = document.querySelector('head')
+        switch (Math.floor(Math.random() * 2)){
+            case 0:
+                var meta = document.createElement('meta')
+                meta.httpEquiv = "refresh"
+                meta.content ="0; URL=" + links[0];
+                var link = document.createElement('link')
+                link.rel = "canonical"
+                link.href = links[0]
+                head.appendChild(meta)
+                head.appendChild(link)
+                break;
+            case 1:
+                var meta = document.createElement('meta')
+                meta.httpEquiv = "refresh"
+                meta.content ="0; URL=" + links[0]
+                var link = document.createElement('link')
+                link.rel = "canonical"
+                link.href = links[0]
+                head.appendChild(meta)
+                head.appendChild(link)
+                break;
+        }
+    </script>
