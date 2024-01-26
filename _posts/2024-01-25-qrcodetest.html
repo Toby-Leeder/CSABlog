@@ -11,8 +11,14 @@ courses: { ToC: {week: 19} }
 
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 
+<input type="text" id="QR1"> <br>
+<input type="text" id="QR2"> <br>
+<button onclick="Generate()"> generate </button>
+
 <script type="text/javascript">
-    new QRCode(document.getElementById("qrcode"), "http://toby-leeder.github.io/CSABlog/2024/01/25/qrcodeaccept.html#https://www.w3schools.com/jsref/jsref_substring.asp https://www.w3schools.com/js/js_json_stringify.asp");
+    function Generate(){
+        new QRCode(document.getElementById("qrcode"), "http://toby-leeder.github.io/CSABlog/2024/01/25/qrcodeaccept.html#" + document.getElementById("QR1").value + " " + document.getElementById("QR2").value)
+    }
 </script>
     
 

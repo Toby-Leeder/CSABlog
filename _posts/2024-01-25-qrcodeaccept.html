@@ -16,27 +16,31 @@ courses: { ToC: {week: 19} }
     <script>
         var hash = window.location.hash.substring(1)
         links = hash.split("%20");
+        console.log(links);
         var head = document.querySelector('head')
-        switch (Math.floor(Math.random() * 2)){
-            case 0:
-                var meta = document.createElement('meta')
-                meta.httpEquiv = "refresh"
-                meta.content ="0; URL=" + links[0];
-                var link = document.createElement('link')
-                link.rel = "canonical"
-                link.href = links[0]
-                head.appendChild(meta)
-                head.appendChild(link)
-                break;
-            case 1:
-                var meta = document.createElement('meta')
-                meta.httpEquiv = "refresh"
-                meta.content ="0; URL=" + links[0]
-                var link = document.createElement('link')
-                link.rel = "canonical"
-                link.href = links[0]
-                head.appendChild(meta)
-                head.appendChild(link)
-                break;
-        }
+        var randNum = Math.floor(Math.random() * links.length)
+
+        var meta = document.createElement('meta')
+        meta.httpEquiv = "refresh"
+        meta.content ="0; URL=" + links[randNum];
+        var link = document.createElement('link')
+        link.rel = "canonical"
+        link.href = links[randNum]
+        head.appendChild(meta)
+        head.appendChild(link)
+        // switch (Math.floor(Math.random() * 2)){
+        //     case 0:
+                
+        //         break;
+        //     case 1:
+        //         var meta = document.createElement('meta')
+        //         meta.httpEquiv = "refresh"
+        //         meta.content ="0; URL=" + links[0]
+        //         var link = document.createElement('link')
+        //         link.rel = "canonical"
+        //         link.href = links[0]
+        //         head.appendChild(meta)
+        //         head.appendChild(link)
+        //         break;
+        // }
     </script>
