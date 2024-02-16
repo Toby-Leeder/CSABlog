@@ -4,6 +4,7 @@ title: N@tM Review - Capture the Moment
 description: My review of the N@tM
 courses: {'ToC': {'week': 24}}
 type: hacks
+comments: true
 ---
 
 ### Planning for next trimester
