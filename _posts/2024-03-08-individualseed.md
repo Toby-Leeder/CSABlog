@@ -23,4 +23,10 @@ For this team I have become the manager of one of the "trios" (it actually has 4
 </details>
 <details>
 
+# AP Prep
 
+- [Associations](https://github.com/Toby-Leeder/CSABlog/issues/4)
+- [FRQ 1](https://toby-leeder.github.io/CSABlog//2024/02/15/Tri-2-Final-FRQ-1_IPYNB_2_.html)
+- [FRQ 2](https://toby-leeder.github.io/CSABlog//2024/02/15/Tri-2-Final-FRQ-2_IPYNB_2_.html)
+- [FRQ 3](https://toby-leeder.github.io/CSABlog//2024/02/15/Tri-2-Final-FRQ-3_IPYNB_2_.html)
+- [FRQ 4](https://toby-leeder.github.io/CSABlog//2024/02/15/Tri-2-Final-FRQ-4_IPYNB_2_.html)
