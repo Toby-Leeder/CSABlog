@@ -5,6 +5,7 @@ description:
 type: tangibles
 courses: { ToC: {week: 25} }
 toc: true
+comments: true
 ---
 
 # Project Contributions
