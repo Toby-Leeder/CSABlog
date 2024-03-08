@@ -20,8 +20,7 @@ For this team I have become the manager of one of the "trios" (it actually has 4
    <li><a href="https://github.com/Toby-Leeder?tab=overview&from=2024-02-01&to=2024-02-29">Link to analytics</a></li>
 </ul>
 <img src="https://github.com/John-sCC/jcc_frontend/assets/112529809/a352b6f9-476a-4bb9-a964-afd461a5e2e8">
-</details>
-<details>
+
 
 # AP Prep
 
