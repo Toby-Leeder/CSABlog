@@ -78,26 +78,26 @@ def get_github_repository_issues(owner, repo_name, token=None):
         print("Failed to fetch data:", response.text)
         return None
 
-# Provide your GitHub username, repository name, and token (if needed)
-owner = "John-scc"
-repo_name = "jcc_frontend"
-token = "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"  # Replace with your personal access token if needed
+def create_issues():
+  owner = "John-scc"
+  repo_name = "jcc_frontend"
+  token = "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" 
+  
+  issues_data = get_github_repository_issues(owner, "jcc_frontend")["data"]["repository"]["issues"]["nodes"] + get_github_repository_issues(owner, "jcc_backend")["data"]["repository"]["issues"]["nodes"]
 
-# Fetch issues
-issues_data = get_github_repository_issues(owner, "jcc_frontend", token)["data"]["repository"]["issues"]["nodes"] + get_github_repository_issues(owner, "jcc_backend", token)["data"]["repository"]["issues"]["nodes"]
+  date1 = datetime(2023, 8, 21)
+  for issue in issues_data:
+      year, month, day = map(int, issue["createdAt"][:10].split("-"))
+      date2 = datetime(year,month,day)
+      difference = date2 - date1
+      week = difference.days/7
+      issue_data = {
+          'title': issue["title"],
+          'body': issue["body"],
+          'created_at': issue["createdAt"][:10],
+          'week': math.floor(week - 3)
+      }
+      generate_markdown_file(issue_data, f"_posts/{issue['createdAt'][:10]}-{issue['title'].replace(' ', '-').replace('/', ' ')}.md")
 
-
-date1 = datetime(2023, 8, 21)
-for issue in issues_data:
-    year, month, day = map(int, issue["createdAt"][:10].split("-"))
-    date2 = datetime(year,month,day)
-    difference = date2 - date1
-    week = difference.days/7
-    issue_data = {
-        'title': issue["title"],
-        'body': issue["body"],
-        'created_at': issue["createdAt"][:10],
-        'week': math.floor(week - 3)
-    }
-    generate_markdown_file(issue_data, f"_posts/{issue['createdAt'][:10]}-{issue['title'].replace(' ', '-').replace('/', ' ')}.md")
-
+if __name__ == "__main__":
+    create_issues()

@@ -35,6 +35,7 @@ default: server
 		} \
 	}') 2>/dev/null &
 	@# start an infinite loop with timeout to check log status
+	@python -c 'import sys; from scripts.pull_issues import create_issues; create_issues()' "$<"
 	@for ((COUNTER = 0; ; COUNTER++)); do \
 		if grep -q "Server address:" $(LOG_FILE); then \
 			echo "Server started in $$COUNTER seconds"; \
@@ -69,6 +70,7 @@ convert: $(MARKDOWN_FILES)
 $(DESTINATION_DIRECTORY)/%_IPYNB_2_.md: _notebooks/%.ipynb
 	@echo "Converting source $< to destination $@"
 	@python -c 'import sys; from scripts.convert_notebooks import convert_single_notebook; convert_single_notebook(sys.argv[1])' "$<"
+
 
 # Clean up project derived files, to avoid run issues stop is dependency
 clean: stop
