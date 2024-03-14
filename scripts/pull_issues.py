@@ -17,10 +17,10 @@ def generate_markdown_file(issue_data, file_path):
         file.write(f"title: '{issue_data['title']}'\n")
         file.write('layout: post\n')  # Adjust layout as needed
         
-        file.write(f"week: {issue_data['created_at']}\n")  # Use issue creation date
         file.write('tags: [github, issue]\n')  # Add relevant tags
         file.write("courses: {ToC: {week: " + str(issue_data['week']) + "}}\n")
-        file.write("type : plans")
+        file.write("type : plans\n")
+        file.write("description : Automatically Populated Github Issue\n")
         file.write('---\n\n')
         
         # Write issue body
@@ -84,7 +84,8 @@ repo_name = "jcc_frontend"
 token = "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"  # Replace with your personal access token if needed
 
 # Fetch issues
-issues_data = get_github_repository_issues(owner, repo_name, token)["data"]["repository"]["issues"]["nodes"]
+issues_data = get_github_repository_issues(owner, "jcc_frontend", token)["data"]["repository"]["issues"]["nodes"] + get_github_repository_issues(owner, "jcc_backend", token)["data"]["repository"]["issues"]["nodes"]
+
 
 date1 = datetime(2023, 8, 21)
 for issue in issues_data:
@@ -96,7 +97,7 @@ for issue in issues_data:
         'title': issue["title"],
         'body': issue["body"],
         'created_at': issue["createdAt"][:10],
-        'week': math.floor(week)
+        'week': math.floor(week - 3)
     }
-    generate_markdown_file(issue_data, f"_posts/{issue['createdAt'][:10]}-{issue['title'].replace(' ', '-')}.md")
+    generate_markdown_file(issue_data, f"_posts/{issue['createdAt'][:10]}-{issue['title'].replace(' ', '-').replace('/', ' ')}.md")
 
