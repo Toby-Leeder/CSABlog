@@ -1,6 +1,9 @@
 import requests
 from datetime import datetime
 import math
+import requests
+import json
+
 
 def generate_markdown_file(issue_data, file_path):
     """
@@ -81,9 +84,9 @@ def get_github_repository_issues(owner, repo_name, token=None):
 def create_issues():
   owner = "John-scc"
   repo_name = "jcc_frontend"
-  token = "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" 
+  token = getToken()["GithubApi"] 
   
-  issues_data = get_github_repository_issues(owner, "jcc_frontend")["data"]["repository"]["issues"]["nodes"] + get_github_repository_issues(owner, "jcc_backend")["data"]["repository"]["issues"]["nodes"]
+  issues_data = get_github_repository_issues(owner, "jcc_frontend", token)["data"]["repository"]["issues"]["nodes"] + get_github_repository_issues(owner, "jcc_backend", token)["data"]["repository"]["issues"]["nodes"]
 
   date1 = datetime(2023, 8, 21)
   for issue in issues_data:
@@ -99,5 +102,29 @@ def create_issues():
       }
       generate_markdown_file(issue_data, f"_posts/{issue['createdAt'][:10]}-{issue['title'].replace(' ', '-').replace('/', ' ')}.md")
 
+def getToken():
+    # Replace 'YOUR_API_ENDPOINT' with the actual HTTP API endpoint URL
+    api_endpoint = 'https://7vybv54v24.execute-api.us-east-2.amazonaws.com/GithubSecret'
+
+    # Define headers if needed
+    headers = {
+        'Content-Type': 'application/json',
+    }
+
+    try:
+        # Make a POST request (or GET, PUT, DELETE, etc. depending on your API)
+        response = requests.post(api_endpoint, headers=headers)
+
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            return json.loads(response.json())
+        else:
+            print("Request failed with status code:", response.status_code)
+            print("Response:", response.text)
+
+    except Exception as e:
+        print("Error:", str(e))
+
+    
 if __name__ == "__main__":
     create_issues()
