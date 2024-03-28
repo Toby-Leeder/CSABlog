@@ -50,6 +50,7 @@ def convert_notebook_to_markdown_with_front_matter(notebook_file):
         exporter = MarkdownExporter()
         markdown, _ = exporter.from_notebook_node(notebook)
         
+        print(front_matter)
         # Prepend the front matter to the Markdown content
         front_matter_content = "---\n" + "\n".join(f"{key}: {value}" for key, value in front_matter.items()) + "\n---\n\n"
         markdown_with_front_matter = front_matter_content + markdown
