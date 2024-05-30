@@ -22,6 +22,8 @@ My [Github account](https://github.com/toby-leeder)
 1. [Ruby Guide](https://toby-leeder.github.io/CSABlog/rubyFixes)
 2. [AWS Guide Part 1](https://toby-leeder.github.io/CSPFastpages/2023/04/12/aws-adventures.html)
 3. [AWS Guide Part 2](https://toby-leeder.github.io/CSABlog/2024/03/14/Secret-Lambda_IPYNB_2_.html)
+4. Issue Pulling (see above)
+5. Phaser Game (see above)
 
 ## Communication/Collaboration
 1. [Binary Games](https://github.com/users/Toby-Leeder/projects/2/views/5)
