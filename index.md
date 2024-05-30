@@ -7,8 +7,6 @@ title: Student Blog
 
 My [Github account](https://github.com/toby-leeder)
 
-<img src="images/Toby.jpeg" style="padding-left: 50%; padding-right: 50%; padding-top: 30%; height: 0em;">
-
 ## Coding Cababilities/Uncharted Waters
 1. [Classroom Jukebox](https://classroomjukebox.com) - Spotify API
 2. [Classroom Jukebox](https://classroomjukebox.com/search) - Websocket
